@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/Views/edite_note_view.dart';
 import 'package:notes_app/Views/notes_view.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class NotesApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         NotesView.id: (context) => const NotesView(),
+        EditeNote.id: (context) => const EditeNote(),
       },
       theme: ThemeData(
         brightness: Brightness.dark,
