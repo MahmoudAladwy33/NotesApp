@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/Widgets/custom_app_bar.dart';
+import 'package:notes_app/Widgets/cutsom_text_field.dart';
 
 class EditViewBody extends StatelessWidget {
   const EditViewBody({super.key});
@@ -16,6 +17,17 @@ class EditViewBody extends StatelessWidget {
           CustomAppBar(
             title: 'Edite Notes',
             icon: Icons.check,
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          CutsomTextField(hint: 'Title'),
+          SizedBox(
+            height: 16,
+          ),
+          CutsomTextField(
+            hint: 'Content',
+            maxLines: 5,
           ),
         ],
       ),
