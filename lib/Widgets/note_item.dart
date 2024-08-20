@@ -5,10 +5,18 @@ import 'package:notes_app/Models/note_model.dart';
 import 'package:notes_app/Views/edit_note_view.dart';
 import 'package:notes_app/cubits/notes/notes_cubit.dart';
 
-class NoteItem extends StatelessWidget {
+class NoteItem extends StatefulWidget {
   const NoteItem({super.key, required this.note});
 
   final NoteModel note;
+
+  @override
+  State<NoteItem> createState() => _NoteItemState();
+}
+
+class _NoteItemState extends State<NoteItem> {
+  double _iconScale = 1.0;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,7 +26,7 @@ class NoteItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
         decoration: BoxDecoration(
-          color: Color(note.color),
+          color: Color(widget.note.color),
           borderRadius: BorderRadius.circular(24),
         ),
         child: Column(
@@ -26,7 +34,7 @@ class NoteItem extends StatelessWidget {
           children: [
             ListTile(
               title: Text(
-                note.title,
+                widget.note.title,
                 style: const TextStyle(
                   fontSize: 26,
                   color: Colors.black,
@@ -35,29 +43,44 @@ class NoteItem extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16, bottom: 16),
                 child: Text(
-                  note.subTitle,
+                  widget.note.subTitle,
                   style: TextStyle(
                     color: Colors.black.withOpacity(0.5),
                     fontSize: 18,
                   ),
                 ),
               ),
-              trailing: IconButton(
-                onPressed: () {
-                  note.delete();
-                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                },
-                icon: const Icon(
-                  FontAwesomeIcons.trash,
+              trailing: AnimatedScale(
+                scale: _iconScale,
+                duration: const Duration(milliseconds: 100),
+                child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _iconScale = 0.0;
+                    });
+                    Future.delayed(
+                      const Duration(milliseconds: 200),
+                      () {
+                        widget.note.delete(); // احذف الـ note بعد الأنيميشن
+                        BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                      },
+                    );
+                    setState(() {
+                      _iconScale = 1.0;
+                    });
+                  },
+                  icon: const Icon(
+                    FontAwesomeIcons.trash,
+                  ),
+                  color: Colors.black,
+                  iconSize: 24,
                 ),
-                color: Colors.black,
-                iconSize: 24,
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 24),
               child: Text(
-                note.date,
+                widget.note.date,
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.4),
                   fontSize: 16,
