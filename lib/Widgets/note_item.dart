@@ -21,7 +21,7 @@ class _NoteItemState extends State<NoteItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, EditNote.id);
+        Navigator.pushNamed(context, EditNote.id, arguments:widget.note);
       },
       child: Container(
         padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
