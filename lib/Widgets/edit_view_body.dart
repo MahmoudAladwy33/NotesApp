@@ -5,6 +5,7 @@ import 'package:notes_app/Widgets/custom_app_bar.dart';
 import 'package:notes_app/Widgets/cutsom_text_field.dart';
 import 'package:notes_app/Widgets/edit_note_colors_list.dart';
 import 'package:notes_app/cubits/notes/notes_cubit.dart';
+import 'package:notes_app/helper/success_snack_bar.dart';
 
 class EditViewBody extends StatefulWidget {
   const EditViewBody({super.key, required this.note});
@@ -34,6 +35,7 @@ class _EditViewBodyState extends State<EditViewBody> {
               widget.note.save();
               BlocProvider.of<NotesCubit>(context).fetchAllNotes();
               Navigator.pop(context);
+              successSnackBar(context, 'Edit note success');
             },
             title: 'Edite Notes',
             icon: Icons.check,
