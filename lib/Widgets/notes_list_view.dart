@@ -14,7 +14,23 @@ class NotesListView extends StatelessWidget {
         builder: (context, state) {
           List<NoteModel> notes =
               BlocProvider.of<NotesCubit>(context).notes ?? [];
-
+          if (notes.isEmpty) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/imgs/rafiki.png'),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Text(
+                  'Create your first note !',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            );
+          }
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 16),
             child: ListView.builder(
