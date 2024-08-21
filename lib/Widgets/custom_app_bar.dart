@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/Widgets/custom_search_icon.dart';
+import 'package:notes_app/Widgets/custom_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar(
@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        CustomSearchIcon(
+        CustomIcon(
           onPressed: onPressed,
           icon: icon,
         ),

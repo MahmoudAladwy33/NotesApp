@@ -46,7 +46,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             onSaved: (data) {
               content = data;
             },
-            hint: 'Content',
+            hint: 'Type something ...',
             maxLines: 5,
           ),
           const SizedBox(

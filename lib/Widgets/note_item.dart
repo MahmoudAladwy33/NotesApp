@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/Models/note_model.dart';
 import 'package:notes_app/Views/edit_note_view.dart';
 import 'package:notes_app/cubits/notes/notes_cubit.dart';
+import 'package:notes_app/helper/success_snack_bar.dart';
 
 class NoteItem extends StatefulWidget {
   const NoteItem({super.key, required this.note});
@@ -21,7 +22,7 @@ class _NoteItemState extends State<NoteItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, EditNote.id, arguments:widget.note);
+        Navigator.pushNamed(context, EditNote.id, arguments: widget.note);
       },
       child: Container(
         padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
@@ -61,8 +62,9 @@ class _NoteItemState extends State<NoteItem> {
                     Future.delayed(
                       const Duration(milliseconds: 200),
                       () {
-                        widget.note.delete(); // احذف الـ note بعد الأنيميشن
+                        widget.note.delete();
                         BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                        successSnackBar(context, 'delete note success');
                       },
                     );
                     setState(() {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/Constants.dart';
 import 'package:notes_app/Widgets/custom_circular_indicator.dart';
 
 class CustomButton extends StatelessWidget {
@@ -15,7 +14,7 @@ class CustomButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: 55,
         decoration: BoxDecoration(
-          color: kPrimaryColor,
+          color:const Color(0xff30be71),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
@@ -24,7 +23,7 @@ class CustomButton extends StatelessWidget {
               : const Text(
                   'Add',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),

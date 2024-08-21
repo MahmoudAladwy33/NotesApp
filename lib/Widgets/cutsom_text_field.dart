@@ -3,11 +3,15 @@ import 'package:notes_app/Constants.dart';
 
 class CutsomTextField extends StatelessWidget {
   const CutsomTextField(
-      {super.key, required this.hint, this.maxLines = 1, this.onSaved, this.onChanged});
+      {super.key,
+      required this.hint,
+      this.maxLines = 1,
+      this.onSaved,
+      this.onChanged});
 
   final String hint;
   final int maxLines;
-  final Function(String)? onChanged ;
+  final Function(String)? onChanged;
   final void Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,7 @@ class CutsomTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: const TextStyle(
-          color: kPrimaryColor,
+          color: Colors.white,
         ),
         border: buildBorder(),
         enabledBorder: buildBorder(),
