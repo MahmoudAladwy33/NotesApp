@@ -37,7 +37,7 @@ class _EditViewBodyState extends State<EditViewBody> {
               Navigator.pop(context);
               successSnackBar(context, 'Edit note success');
             },
-            title: 'Edite Notes',
+            title: 'Edit Notes',
             icon: Icons.check,
           ),
           const SizedBox(
